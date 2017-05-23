@@ -1,0 +1,165 @@
+
+var rootref = firebase.database().ref().child('users');
+var y=0;
+     rootref.once("value",function(snapshot){ 
+     	snapshot.forEach(function(childSnapshot){  
+            y++;
+            var x = childSnapshot.key;
+            
+     		 var tb = document.getElementById('table_body');
+                  var thh = document.getElementById('table_header');
+         var tr = document.createElement('tr');
+         
+         tb.appendChild(tr);
+         tr.id=childSnapshot.key;
+
+         var bt = document.createElement('td')
+         tr.appendChild(bt);
+         var ck = document.createElement('input');
+     			ck.type = "checkbox";
+     			
+     			ck.id = "ck";
+     			ck.name = "ck1";
+     			bt.appendChild(ck);
+     				
+  if (y>1){
+    rootref.child(x).on("child_added",snap => {
+    
+        var td = document.createElement('td')
+         tr.appendChild(td);
+         td.innerText = snap.val();
+          td.className=snap.key;
+    });
+  }
+  else{
+     		rootref.child(x).on("child_added",snap => {
+	
+        var th = document.createElement('th');
+        thh.appendChild(th);
+        th.innerText=snap.key;
+         var td = document.createElement('td')
+         tr.appendChild(td);
+         td.innerText = snap.val();
+		  td.className=snap.key;
+	});
+     	}	 
+	
+     		rootref.child(x).on('child_changed',snap => {
+		
+         const jk = document.getElementById(childSnapshot.key).getElementsByClassName(snap.key)[0];
+         
+         jk.innerText=snap.val(); 
+         
+
+        
+         
+
+
+
+
+
+     	});
+     });
+     });
+     $(document).ready(function() {
+    $('table').on('click', 'tr', function(event) {
+        if (event.target.type !== 'checkbox') {
+            $(':checkbox', this).trigger('click');
+        }
+    });
+});
+
+     $(document.body).on('click', "input[type=checkbox]", function(){
+	$(':checkbox').each(function( ) {
+
+var jj = $(this).closest('tr').attr('id');
+ if($(this).is(":checked")){ 
+   
+$('#'+jj).addClass('highlight');
+  }
+    else{
+    	$('#'+jj).removeClass('highlight');
+      
+    }
+
+});
+	
+});
+
+	function toggle(source) {
+  checkboxes = document.getElementsByName('ck1');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+
+function natconclick() {window.location="natcon.html";
+    
+}
+	function submitclick(clicked_id) {
+		
+
+
+		 $(':checkbox:checked').each(function( ) { 
+		 	var x = $(this).attr('id');
+
+		 	if (x == 'x1'){
+		 		return;}
+		 	
+
+  var closestTr = $(this).closest('tr').attr('id');
+  
+
+ var firebaseRef = firebase.database().ref().child("users").child(closestTr);
+        switch(clicked_id)
+        {case 'b0' :
+        	firebaseRef.child("adminauth").set("approved");
+        	break;
+        case 'b1' :
+        	firebaseRef.child("adminauth").set("denied");
+        	break;
+        case 'b2' :
+        	firebaseRef.child("natconregistered").set("approved");
+        	break;
+        case 'b3' :
+        	firebaseRef.child("natconregistered").set("denied");
+        	break;
+        case 'b4' :
+        	firebaseRef.child("paymentstatus").set("approved");
+        	break;
+        case 'b5' :
+        	firebaseRef.child("paymentstatus").set("denied");
+        	break;
+
+        
+        
+        
+        
+        
+
+        }
+    });
+		}
+var logout = document.getElementById('btnlogout');
+logout.addEventListener('click', e=>{
+	firebase.auth().signOut().then(function() {
+  window.location = 'login12.html';
+});
+});
+
+		
+     
+		
+     
+    
+        
+    
+    
+
+		
+
+
+
+        
+        
+	

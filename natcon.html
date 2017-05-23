@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head><!-- Latest compiled and minified CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+                                <style >
+                             th{text-transform: capitalize;}
+                                  td,th{ white-space: nowrap;
+                                    text-align: center;
+                                     font-family: sans-serif;
+                                     position: relative;
+                                    }
+
+                                    table{margin-top: 200px;}
+                                  tr{border-color: white;}
+                                  
+                                  #div1{background-color: #000;
+                                    color: #fff;
+                                    font-family: sans-serif;
+                                    margin-top: -200px;
+                                    height: 200px;
+                                    width: 100%;
+                                    position: fixed;
+                                    z-index: 0;
+                              
+                                  }
+button{cursor:pointer;}
+                                  
+thead, th,td{z-index: -1;
+}
+    .highlight{color: #4885ed;
+       font-weight: bold;
+                                          border:2px solid #840029;  /* Hide the horizontal scroll */
+}
+                                  
+                                  .bg-info{height: 40px;
+                                    width: 150px;
+                                    padding: 8px;
+                                    border-radius: 10px;}
+
+ </style>
+
+</head>
+<body>
+                          
+
+
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAiAMct-f9T9YLtYYfagZ2CRvWjj2IhSNk",
+    authDomain: "credainatcon2017.firebaseapp.com",
+    databaseURL: "https://credainatcon2017.firebaseio.com",
+    projectId: "credainatcon2017",
+    storageBucket: "credainatcon2017.appspot.com",
+    messagingSenderId: "343435373817"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<div class="panel-heading" id = "div1" >
+<div>
+		        <h3 style="text-align: center; padding: 30px;">Natcon Registered
+			        </h3>
+		<div style="float: right; margin-top: -80px; margin-right: 10px; ">        
+	  <button id='Ap' class="btn btn-primary">Admin Portal</button>
+    <button id='btnlogout' class="btn btn-primary">Logout</button>
+    </div>
+</div>	         
+		 <div style="text-align: center;">
+		        <button id = "b2" class="btn btn-success" onclick="submitclick(this.id)">Approve</button>
+              	<button id = "b3" class="btn btn-danger" onclick="submitclick(this.id)">Deny</button>
+	     </div>
+</div>
+
+</div>
+                        
+            <table   class="table table-hover" >
+                  <thead  class="thead-inverse" >
+                  <tr id = "table_header">
+                  		<th><input type="checkbox"  onClick="toggle(this)" id="x1"></th>
+                                     
+                  </tr>
+                       
+              </thead>  
+
+
+              <tbody  id = "table_body" >
+
+             
+
+
+           
+                                    
+              
+               </tbody>
+            </table>
+            <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-body">
+            <img id = "m" class="img-responsive" height=100%; width=100%;>
+        </div>
+    </div>
+  </div>
+</div>
+            
+           
+
+                            
+                     
+<script src="app2.js"></script>
+
+
+              	
+
+</body></html>
